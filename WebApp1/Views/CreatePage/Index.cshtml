@@ -1,0 +1,19 @@
+﻿@model WebApp1.Models.Advertisement
+<body>
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+</body>
+<form method="post" action="/CreatePage/Create">
+    <div>Укажите название</div>
+    <input type="text" asp-for="Title" name="Title" required>
+    <div>Опишите товар</div>
+    <input type="text" asp-for="Description" name="Description" required>
+    <div>Кажите цену</div>
+    <input type="text" asp-for="Price" name="Price" required>
+    <div>Адрес</div>
+    <input type="text" asp-for="Address" name="Address" required>
+    <div>Ваш номер телефона</div>
+    <input type="text" asp-for="PhoneNumber" name="PhoneNumber" required>
+    <div>Ссылка на фото</div>
+    <input type="text" asp-for="ImageUrl" name="ImageUrl" required>
+    <input type="submit" value="Разместить">
+</form>

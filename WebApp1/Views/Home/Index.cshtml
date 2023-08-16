@@ -1,0 +1,21 @@
+﻿@using WebApp1.Models;
+@model List<Advertisement>
+<body>
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+</body>
+<h1>Список объявлений</h1>
+<a href="@Url.Action("RedirectToCreate", "Home")" class="btn btn-primary">Разместить объявление</a>
+<ul>
+    @foreach (var ad in Model)
+    {
+        <li>
+            <h2>@ad.Title</h2>
+            <p>Цена: @ad.Price</p>
+            <p>Адрес: @ad.Address</p>
+            <p>Телефон: @ad.PhoneNumber</p>
+            <p>@ad.Description</p>
+            <img src="@ad.ImageUrl" width="100" height="100">
+        </li>
+    }
+
+</ul>
