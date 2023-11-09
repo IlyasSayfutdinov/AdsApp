@@ -1,0 +1,28 @@
+﻿@model WebApp1.Models.User
+<head>
+    <title>Ваш сайт</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form-style.css">
+</head>
+<body>
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+    <div class="form-container">
+        <form method="post" action="/AuthorizationPage/Log" class="styled-form" enctype="multipart/form-data">
+            <h2>Вход</h2>
+            <div class="form-group">
+                <label for="Name">Имя или Логин</label>
+                <input type="text" asp-for="Name" name="Name" required>
+            </div>
+            <div class="form-group">
+                <label for="Password">Пароль</label>
+                <input type="text" asp-for="Password" name="Password" required>
+            </div>
+            <div class="form-group">
+                <label for="Role">Роль</label>
+                <input type="text" asp-for="Role" name="Role" required>
+            </div>
+            <button type="submit" class="styled-button">Войти</button>
+            <a href="@Url.Action("RedirectToAuthorize", "Home")" class="styled-button">Зарегестрироваться</a>
+        </form>
+    </div>
+</body>

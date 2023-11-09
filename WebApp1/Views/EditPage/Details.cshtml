@@ -1,0 +1,10 @@
+﻿@model WebApp1.Models.Advertisement
+
+<img src="@Model.ImageUrl">
+<h2>@Model.Title</h2>
+<p>Цена: @Model.Price</p>
+<p>Адрес: @Model.Address</p>
+<p>Телефон: @Model.PhoneNumber</p>
+<p>@Model.Description</p>
+<a href="@Url.Action("Details", "EditPage", new { id = Model.Id })" class="btn btn-primary">Подробнее</a>
+<a href="@Url.Action("Edit", "EditPage", new { id = Model.Id })" class="btn btn-primary">Редактировать</a>

@@ -1,0 +1,221 @@
+/* Стили для заголовка */
+body {
+    background-color: #141414;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    background-color: #222222;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 1000;
+    margin-bottom 10px;
+    height: 7%;
+}
+
+    .header h1 {
+        margin: 0;
+    }
+
+    .header a {
+        color: white;
+        text-decoration: none;
+    }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+/* Стили для объявлений в виде карточек с изображением наверху */
+.ad-card {
+    border: 1px solid #424242;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #222222;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .ad-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0px 4px 10px #007bff;
+    }
+
+    .ad-card img {
+        max-width: calc(100%);
+        height: auto;
+        height: 50%;
+        margin-bottom: 10px;
+    }
+
+
+.ad-title {
+    color: #1f99f7;
+    font-size: 18px;
+    margin: 0px;
+} 
+
+.ad-price{
+    color: white;
+    margin: 5px;
+}
+
+.ad-address {
+    color: white;
+    margin: 5px;
+}
+    
+    
+
+/* Стили для формы */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.styled-form {
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+.styled-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .styled-button:hover {
+        background-color: #0056b3;
+    }
+
+
+.center {
+ /* Установите нужное значение максимальной ширины */
+    margin-top: 4%; /* Добавьте отступ сверху, равный высоте заголовка */
+
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.down-menu {
+    margin-right: 80%;
+    margin-top: -5px;
+    color: white;  
+    display: flex;
+    justify-content: flex-start;
+}
+/* Стили для контейнера объявлений */
+.ad-container {
+    max-width: 70%; /* Установите нужное значение максимальной ширины */
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Стили для объявлений в виде карточек с изображением наверху */
+.ad-card {
+    width: calc(33.33% - 100px); /* Рассчитываем ширину для 3 объявлений в ряду */
+    margin: 16px;
+    
+    /* Остальные стили без изменений */
+    height: 250px;
+}
+
+.account-button {
+
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+    
+}
+
+.account-button-txt {
+    border: solid;
+    width: 10%;
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    height: 100%; /* Установите желаемую высоту контейнера */
+    transition: box-shadow 0.3s ease;
+    border-radius: 15px;
+}
+    .account-button-txt:hover {
+        color: #ffee10;
+        box-shadow: 0 0 5px #ffee10;
+        text-shadow: 0 0 5px #ffee10;
+    }
+.ad-btn {
+    width: 50%;
+    height: 10%;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background: #0B63F6;
+    box-shadow: 0 5px 0 #003CC5;
+    display: flex;
+    justify-content: safe center;
+
+}
+
+    .ad-btn:hover {
+        background: #003CC5;
+        box-shadow: none;
+        position: relative;
+        top: 5px;
+    }

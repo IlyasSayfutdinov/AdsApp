@@ -1,0 +1,30 @@
+﻿@Context.Request.Cookies["UserName"]
+@using WebApp1.Models;
+@model List<Advertisement>
+
+<div class="ad-container">
+    @foreach (var ad in Model)
+    {
+        
+
+            
+        if (ad.UserName == Context.Request.Cookies["UserName"])
+        {
+            <div class="ad-card">
+                <img src="@ad.ImageUrl">
+                <h2>@ad.Title</h2>
+                <p>Цена: @ad.Price</p>
+                <p>Адрес: @ad.Address</p>
+                <p>Телефон: @ad.PhoneNumber</p>
+                <p>@ad.Description</p>
+                <a href="@Url.Action("Details", "EditPage", new { id = ad.Id })" class="btn btn-primary">Подробнее</a>
+                <a href="@Url.Action("Edit", "EditPage", new { id = ad.Id })" class="btn btn-primary">Редактировать</a>
+            </div>
+        }
+
+        <a href="@Url.Action("Unlogin", "Home")" class="btn btn-primary">Выйти</a>
+        <a href="@Url.Action("RedirectToCreate", "Home")" class="btn btn-primary">Разместить объявление</a> 
+
+
+    }
+</div>

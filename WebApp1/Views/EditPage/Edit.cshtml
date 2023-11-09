@@ -1,0 +1,40 @@
+﻿@model WebApp1.Models.Advertisement
+<head>
+    <title>Ваш сайт</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form-style.css">
+</head>
+<body>
+    <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+    <div class="form-container">
+        <form method="post" action="/CreatePage/Create" class="styled-form">
+            <input type="hidden" asp-for="Id" name="Id" value="@ViewBag.AdvertisementId" />
+            <h2>Редактирование объявления @ViewBag.AdvertisementId</h2>
+            <div class="form-group">
+                <label for="Title">Название</label>
+                <input type="text" asp-for="Title" name="Title" required>
+            </div>
+            <div class="form-group">
+                <label for="Description">Описание</label>
+                <input type="text" asp-for="Description" name="Description" required>
+            </div>
+            <div class="form-group">
+                <label for="Price">Цена</label>
+                <input type="text" asp-for="Price" name="Price" required>
+            </div>
+            <div class="form-group">
+                <label for="Address">Адрес</label>
+                <input type="text" asp-for="Address" name="Address" required>
+            </div>
+            <div class="form-group">
+                <label for="PhoneNumber">Ваш номер телефона</label>
+                <input type="text" asp-for="PhoneNumber" name="PhoneNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="ImageUrl">Ссылка на фото</label>
+                <input type="text" asp-for="ImageUrl" name="ImageUrl" required>
+            </div>
+            <button type="submit" class="styled-button">Разместить</button>
+        </form>
+    </div>
+</body>

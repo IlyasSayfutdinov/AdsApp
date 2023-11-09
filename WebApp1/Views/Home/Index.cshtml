@@ -1,21 +1,70 @@
 ﻿@using WebApp1.Models;
 @model List<Advertisement>
+@{
+    string userNameCookie = Context.Request.Cookies["UserName"];
+    if (userNameCookie == "" || userNameCookie == null) userNameCookie = "Войти";
+    string user_button;
+    if (userNameCookie == "Войти")
+    {
+        user_button = Url.Action("RedirectToLogin", "Home");
+
+    }
+    else
+    {
+        user_button = Url.Action("RedirectToUser", "AuthorizationPage");
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ваш сайт</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
     <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+    <div class="header">
+        <div class="account-button">
+            <div class="down-menu">
+                <form method="get" action="/">
+                    <label for="Category">Фильтр по категории:</label>
+                    <select id="Category" name="category">
+                        <option value="transport">Транспорт</option>
+                        <option value="real_estate">Недвижимость</option>
+                        <option value="job">Работа</option>
+                        <option value="services">Услуги</option>
+                        <option value="stuff">Вещи</option>
+                        <option value="electronics">Электроника</option>
+                        <option value="hobbie">Хобби</option>
+                        <option value="animals">Животные</option>
+                    </select>
+                    <button type="submit">Применить фильтр</button>
+                </form>
+            </div>
+            <a href="@user_button" class="account-button-txt">@userNameCookie</a>
+        </div>
+    </div>
+    <div class="center">
+        <div class="ad-container">
+            @foreach (var ad in Model)
+            {
+                <div class="ad-card">
+                    <img src="@ad.ImageUrl">
+                    <p class="ad-title">@ad.Title</p>
+                    <p class="ad-price">@ad.Price ₽</p>
+                    <p class="ad-address">@ad.Address</p>
+                    @*<p>Телефон: @ad.PhoneNumber</p>
+                    <p>@ad.Description</p>*@
+                    <a href="@Url.Action("Details", "EditPage", new { id = ad.Id })" class="styled-button">Подробнее</a>
+                    @{
+                        if (ad.UserName == Context.Request.Cookies["UserName"])
+                        {
+                            <a href="@Url.Action("Edit", "EditPage", new { id = ad.Id })" class="ad-btn">Редактировать</a>
+                        }
+                    }
+                </div>
+            }
+        </div>
+    </div>
 </body>
-<h1>Список объявлений</h1>
-<a href="@Url.Action("RedirectToCreate", "Home")" class="btn btn-primary">Разместить объявление</a>
-<ul>
-    @foreach (var ad in Model)
-    {
-        <li>
-            <h2>@ad.Title</h2>
-            <p>Цена: @ad.Price</p>
-            <p>Адрес: @ad.Address</p>
-            <p>Телефон: @ad.PhoneNumber</p>
-            <p>@ad.Description</p>
-            <img src="@ad.ImageUrl" width="100" height="100">
-        </li>
-    }
-
-</ul>
+</html>

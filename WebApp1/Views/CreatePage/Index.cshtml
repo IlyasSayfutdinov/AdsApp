@@ -1,19 +1,71 @@
 ﻿@model WebApp1.Models.Advertisement
+<head>
+    <title>Ваш сайт</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form-style.css">
+</head>
 <body>
     <script src="/_framework/aspnetcore-browser-refresh.js"></script>
+    <div class="form-container">
+        <form method="post" action="/CreatePage/Create" class="styled-form" enctype="multipart/form-data">
+            <h2>Разместить объявление</h2>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="UserName" name="UserName" value="@Context.Request.Cookies["UserName"]" />
+            <div class="form-group">
+                <label for="Category">Категория</label>
+                <select asp-for="Category" name="Category" required>
+                    <option value="transport">Транспорт</option>
+                    <option value="real_estate">Недвижимость</option>
+                    <option value="job">Работа</option>
+                    <option value="services">Услуги</option>
+                    <option value="stuff">Вещи</option>
+                    <option value="electronics">Электроника</option>
+                    <option value="hobbie">Хобби</option>
+                    <option value="animals">Животные</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Title">Название</label>
+                <input type="text" asp-for="Title" name="Title" required>
+            </div>
+            <div class="form-group">
+                <label for="Description">Описание</label>
+                <input type="text" asp-for="Description" name="Description" required>
+            </div>
+            <div class="form-group">
+                <label for="Price">Цена</label>
+                <input type="text" asp-for="Price" name="Price" required>
+            </div>
+            <div class="form-group">
+                <label for="Address">Адрес</label>
+                <input type="text" asp-for="Address" name="Address" required>
+            </div>
+            <div class="form-group">
+                <label for="PhoneNumber">Ваш номер телефона</label>
+                <input type="text" asp-for="PhoneNumber" name="PhoneNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="ImageFile">Загрузить изображение</label>
+                <input type="file" name="ImageFile" id="ImageFile" class="form-control" accept="image/*" required>
+            </div>
+            <input type="hidden" asp-for="ImageUrl" id="ImageUrl" name="ImageUrl" />
+            <script>
+                document.getElementById("ImageFile").addEventListener("change", function () {
+                    // Получите выбранный файл
+                    var fileInput = document.getElementById("ImageFile");
+                    var selectedFile = fileInput.files[0];
+
+                    // Если файл выбран
+                    if (selectedFile) {
+                        // Получите имя файла
+                        var fileName = selectedFile.name;
+
+                        // Присвойте имя файла полю ImageUrl
+                        document.getElementById("ImageUrl").value = "~\\Images\\" + fileName;
+                    }
+                });
+            </script>
+            <button type="submit" class="styled-button">Разместить</button>
+        </form>
+    </div>
 </body>
-<form method="post" action="/CreatePage/Create">
-    <div>Укажите название</div>
-    <input type="text" asp-for="Title" name="Title" required>
-    <div>Опишите товар</div>
-    <input type="text" asp-for="Description" name="Description" required>
-    <div>Кажите цену</div>
-    <input type="text" asp-for="Price" name="Price" required>
-    <div>Адрес</div>
-    <input type="text" asp-for="Address" name="Address" required>
-    <div>Ваш номер телефона</div>
-    <input type="text" asp-for="PhoneNumber" name="PhoneNumber" required>
-    <div>Ссылка на фото</div>
-    <input type="text" asp-for="ImageUrl" name="ImageUrl" required>
-    <input type="submit" value="Разместить">
-</form>
