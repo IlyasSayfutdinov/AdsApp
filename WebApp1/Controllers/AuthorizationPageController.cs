@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Ads.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp1.Data;
@@ -43,6 +44,7 @@ namespace Ads.Controllers
         [HttpPost]
         public IActionResult Log(User model)
         {
+            model.Password = PasswordHashingService.hashPassword(model.Password);
             // Используйте Dependency Injection, чтобы получить доступ к контексту базы данных
             var user = _context.FindUserByNameAndPassword(model.Name, model.Password);
 
@@ -85,6 +87,7 @@ namespace Ads.Controllers
         [HttpPost]
         public IActionResult Create(User model)
         {
+            model.Password = PasswordHashingService.hashPassword(model.Password);
             if (ModelState.IsValid)
             {
                 _context.Users.Add(model);

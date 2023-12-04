@@ -16,14 +16,23 @@ namespace WebApp1.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(string category)
+        public IActionResult Index(string category, string searchQuery)
         {
             // Получите объявления только для выбранной категории
             var advertisements = _context.Advertisements
                 .Where(a => string.IsNullOrEmpty(category) || a.Category == category)
                 .ToList();
 
+            // Если есть поисковый запрос, фильтруем объявления по запросу
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                advertisements = advertisements
+                    .Where(a => a.Title.Contains(searchQuery) || a.Description.Contains(searchQuery))
+                    .ToList();
+            }
+
             ViewBag.SelectedCategory = category; // Передаем выбранную категорию в представление
+            ViewBag.SearchQuery = searchQuery; // Передаем поисковый запрос в представление
 
             foreach (var ad in advertisements)
             {

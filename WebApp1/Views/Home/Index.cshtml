@@ -26,7 +26,7 @@
     <div class="header">
         <div class="account-button">
             <div class="down-menu">
-                <form method="get" action="/">
+                <form method="get" action="@Url.Action("Index", "Home")">
                     <label for="Category">Фильтр по категории:</label>
                     <select id="Category" name="category">
                         <option value="transport">Транспорт</option>
@@ -43,6 +43,10 @@
             </div>
             <a href="@user_button" class="account-button-txt">@userNameCookie</a>
         </div>
+        <form id="searchForm" method="get" action="@Url.Action("Index", "Home")">
+            <input type="text" id="searchInput" name="searchQuery" placeholder="Введите запрос" value="@ViewBag.SearchQuery">
+            <button type="submit">Искать</button>
+        </form>
     </div>
     <div class="center">
         <div class="ad-container">

@@ -2,29 +2,49 @@
 @using WebApp1.Models;
 @model List<Advertisement>
 
-<div class="ad-container">
-    @foreach (var ad in Model)
-    {
-        
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ваш сайт</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<div class="ad-container">
+        <div style="width: 100%; color: white;">
+            <h2>Ваши объявления</h2>
+        </div>
+		@foreach (var ad in Model)
+		{
 
-            
-        if (ad.UserName == Context.Request.Cookies["UserName"])
-        {
-            <div class="ad-card">
-                <img src="@ad.ImageUrl">
-                <h2>@ad.Title</h2>
-                <p>Цена: @ad.Price</p>
-                <p>Адрес: @ad.Address</p>
-                <p>Телефон: @ad.PhoneNumber</p>
-                <p>@ad.Description</p>
-                <a href="@Url.Action("Details", "EditPage", new { id = ad.Id })" class="btn btn-primary">Подробнее</a>
-                <a href="@Url.Action("Edit", "EditPage", new { id = ad.Id })" class="btn btn-primary">Редактировать</a>
-            </div>
+            @if (ad.UserName == Context.Request.Cookies["UserName"])
+            {
+
+                <div class="ad-card">
+
+
+                    <img src="../@ad.ImageUrl">
+                    <p class="ad-title">@ad.Title</p>
+                    <p class="ad-price">@ad.Price ₽</p>
+                    <p class="ad-address">@ad.Address</p>
+                    @*<p>Телефон: @ad.PhoneNumber</p>
+                    <p>@ad.Description</p>*@
+                    <a href="@Url.Action("Details", "EditPage", new { id = ad.Id })" class="styled-button">Подробнее</a>
+                    {
+                    @if (ad.UserName == Context.Request.Cookies["UserName"])
+                    {
+                    <a href="@Url.Action("Edit", "EditPage", new { id = ad.Id })" class="ad-btn">Редактировать</a>
+                    }
+                    }
+
+                </div>
+            }
         }
+	</div>
 
-        <a href="@Url.Action("Unlogin", "Home")" class="btn btn-primary">Выйти</a>
-        <a href="@Url.Action("RedirectToCreate", "Home")" class="btn btn-primary">Разместить объявление</a> 
+	<div style="height: 50%; width: 20%;">
+        <a href="@Url.Action("Unlogin", "Home")" class="ad-btn">Выйти</a>
+        <a href="@Url.Action("RedirectToCreate", "Home")" class="ad-btn">Разместить объявление</a>
+    </div>
+</body>
 
-
-    }
-</div>
+</html>

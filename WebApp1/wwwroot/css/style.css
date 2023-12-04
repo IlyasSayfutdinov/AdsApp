@@ -170,9 +170,9 @@ body {
 .ad-card {
     width: calc(33.33% - 100px); /* Рассчитываем ширину для 3 объявлений в ряду */
     margin: 16px;
-    
     /* Остальные стили без изменений */
     height: 250px;
+    min-width: 200px;
 }
 
 .account-button {
